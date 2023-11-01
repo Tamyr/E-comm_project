@@ -13,4 +13,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
 	@Query("select p from Produit p where p.titre_produit like :x")
 	public List<Produit> findByProductTitle(@Param("x") String mc);
 	
+	
+	
 }

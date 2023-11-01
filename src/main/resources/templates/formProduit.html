@@ -16,19 +16,19 @@
 					<div class="card">
 						<div class="card-header h5">Nouvelle Categorie</div>
 						<div class="card-body">
-							<form th:action="@{/saveProduit}" method="post">
+							<form action="#" th:action="@{/saveProduit}" th:object="${produit}" method="post">
 
 								<div class="mb-4">
 									<label>Titre </label>
-									<input type="text" class="form-control" name="titre_produit"
-										th:value="${produit.titre_produit}" />
+									<input type="text" class="form-control" th:field="*{titre_produit}" name="titre_produit"
+										 />
 								</div>
 
 								<div class="mb-4">
 									<label>Désignation </label>
 									<textarea type="text" style="height: 80px;" name="designation_produit"
-										th:value="${produit.designation_produit}"
-										th:text="${produit.designation_produit}" class="form-control"></textarea>
+										
+										th:field="*{designation_produit}" class="form-control"></textarea>
 									<!--<span th:errors="${categorie.designation_categorie}"></span>-->
 								</div>
 
@@ -36,21 +36,21 @@
 								<div class="mb-4">
 									<label>Prix </label>
 									<input type="text" class="form-control" name="prix_produit"
-										th:value="${produit.prix_produit}" />
+										th:field="*{prix_produit}" />
 								</div>
 
 
 								<div class="mb-4">
 									<label>Qte Stock </label>
 									<input type="text" class="form-control" name="stock_produit"
-										th:value="${produit.stock_produit}" />
+										th:field="*{stock_produit}" />
 								</div>
 
 
 								<div class="mb-4">
 									<label>Categorie </label>
 
-									<select>
+									<select id="id_categorie" name="id_categorie">
 										<option value="0">-- Choisir categorie --</option>
 										<option th:each="list : ${listCategories}" th:value="${list.id_categorie}" th:text="${list.designation_categorie}">
 										</option>

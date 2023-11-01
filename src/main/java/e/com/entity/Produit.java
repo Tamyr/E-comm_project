@@ -3,6 +3,7 @@ package e.com.entity;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,8 +21,8 @@ public class Produit {
 	private String designation_produit;
 	private double prix_produit;
 	private int stock_produit;
-	@ManyToOne
-	@JoinColumn(name="ID_CATEGORIE")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="ID_CATEGORIE",nullable = false)
 	private Categorie categorie;
 	
 	public Produit(String titre_produit, String designation_produit, double prix_produit, int stock_produit,
