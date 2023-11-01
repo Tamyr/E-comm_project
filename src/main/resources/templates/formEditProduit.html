@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="template.html">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>MY STORE | Meilleures Produit & Articles</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="row mt-4">
+				<div class="col-md-6 offset-3">
+					<div class="card">
+						<div class="card-header h5">Nouvelle Categorie</div>
+						<div class="card-body">
+							<form th:action="@{/saveProduit}" method="post">
+
+								<div class="mb-4">
+									<label>Titre </label>
+									<input type="text" class="form-control" name="titre_produit"
+										th:value="${produit.titre_produit}" />
+								</div>
+
+								<div class="mb-4">
+									<label>Désignation </label>
+									<textarea type="text" style="height: 80px;" name="designation_produit"
+										th:value="${produit.designation_produit}"
+										th:text="${produit.designation_produit}" class="form-control"></textarea>
+									<!--<span th:errors="${categorie.designation_categorie}"></span>-->
+								</div>
+
+
+								<div class="mb-4">
+									<label>Prix </label>
+									<input type="text" class="form-control" name="prix_produit"
+										th:value="${produit.prix_produit}" />
+								</div>
+
+
+								<div class="mb-4">
+									<label>Qte Stock </label>
+									<input type="text" class="form-control" name="stock_produit"
+										th:value="${produit.stock_produit}" />
+								</div>
+
+
+								<div class="mb-4">
+									<label>Categorie </label>
+
+									<select>
+										<option value="0">-- Choisir categorie --</option>
+										<option th:each="list : ${listCategories}" th:value="${list.id_categorie}" th:text="${list.designation_categorie}">
+										</option>
+									</select>
+
+
+								</div>
+
+
+								<div class="text-center">
+									<button class="btn btn-success">Ajouter</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

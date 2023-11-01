@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="template.html">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="row mt-4">
+				<div class="col-md-6 offset-3">
+					<div class="card">
+						<div class="card-header h5">Nouvelle Categorie</div>
+						<div class="card-body">
+
+							<form th:action="@{/saveCategorie}" method="post">
+								<div class="mb-4">
+									<label>Désignation </label>
+									<textarea type="text" style="height: 80px;"  name="designation_categorie" th:value="${categorie.designation_categorie}"
+									th:text="${categorie.designation_categorie}" class="form-control"></textarea>
+									<span th:errors="${categorie.designation_categorie}"></span>
+								</div>
+
+								<div class="text-center">
+									<button class="btn btn-success">Ajouter</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="template.html">
+
+<head>
+	<meta charset="utf-8">
+	<title>MY STORE | Meilleures Produit & Articles</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="container mt-5 mb-5">
+
+
+			<table class="table table-hover">
+				<thead class="table-dark" border="1">
+					<tr>
+						<th>ID</th>
+						<th>Designation</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="c:${listCategorie}">
+						<td th:text="${c.id_categorie}"></td>
+						<td th:text="${c.designation_categorie}"></td>
+						<td>
+							<a th:href="@{/formEditCategorie/{id}(id=${c.id_categorie})}" class="btn btn-success">
+								<i class="bi bi-pen"></i>
+							</a>
+							<a
+								onclick="javascript:return confirm('Etes vous sure?')"
+								th:href="@{/deleteCategorie(id=${c.id_categorie})}"
+								class="btn btn-danger"> <i class="bi bi-trash"></i>
+								</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
